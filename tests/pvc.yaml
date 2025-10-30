@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-test-pvc
+  labels:
+    app: ebs-test
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # explicitly use CSI-backed StorageClass (created in tests/storageclass-ebs-csi.yaml)
+  storageClassName: ebs-csi-sc
